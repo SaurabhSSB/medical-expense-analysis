@@ -1,0 +1,43 @@
+---
+title: "Medical Expense"
+author: "Saurabh Singh Bhandari"
+date: "2025-01-08"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+# Library used
+```{r,results='hold', message= FALSE, warning= FALSE}
+library(tidyverse)
+```
+
+# Download the file
+```{r}
+m_expenses <- read.csv("C:/Users/Hp/Desktop/medical_expenses.csv")
+```
+
+# Basic Operations
+
+```{r}
+head(m_expenses)
+
+str(m_expenses)
+
+summary(m_expenses)
+
+colSums(is.na(m_expenses))
+```
+
+# Visualize Relationship
+
+## Between Numberical Variable
+```{r}
+ggplot(m_expenses, aes(x = age, y = charges)) + geom_point() + geom_smooth() + ggtitle("Charges vs Age")
+ggplot(m_expenses, aes(x = bmi, y = charges)) + geom_point() + geom_smooth() + ggtitle("Charges vs BMI")
+ggplot(m_expenses, aes(x = children, y = charges)) + geom_point() + geom_smooth() + ggtitle("Charges vs No. of Children")
+ggplot(m_expenses, aes(x = as.factor(children), y = charges)) + geom_boxplot() + ggtitle("Charges vs Smoker")
+
+```
+
